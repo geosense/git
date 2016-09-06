@@ -20,6 +20,18 @@ Správa verzí v systému GIT!
 
 .. _Distribuovaná správa revizí s GIT: http://www.root.cz/serialy/distribuovana-sprava-revizi-s-git/
 
+License
+=======
+
+.. table::
+   :class: noborder
+
+   +----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | .. image:: _static/cc-by-sa.png  | Text je licencován pod `Creative Commons Attribution-ShareAlike 4.0 International License <http://creativecommons.org/licenses/by-sa/4.0/>`_. |
+   |           :width: 125px          |                                                                                                                                                       |
+   +----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 
 Indices and tables
 ==================
