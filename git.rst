@@ -99,3 +99,5 @@ A dostane se vám vyčerpávající odpovědi::
 
 Vytvoření prázdného lokálního repozitáře
 ========================================
+Co vlastně udělal příkaz `git init` ? Vytvořil lokální adresář `.git` s
+kompletní historií projektu a nějakou tou konfigurací.
