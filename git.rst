@@ -9,7 +9,7 @@ nepřicházelo vzhledem k množství změn v úvahu.
 GIT je *decentralizovaný* což znamená, že není jeden hlavní repozitář, ke
 kterému se ostatní "kopie" pouze odvolávají, ale každý *klon* je považován za
 plnohodnotný repozitář. Všichni mají vždy k dispozici plnou kopii projektu
-včetně historie - ale mohou mít i několik různých "plných kopií". Spráce
+včetně historie - ale mohou mít i několik různých "plných kopií". Správce
 projektu obvykle sehrává z různých repozitářů změny do hlavního repozitáře a
 rozhoduje o jejich pořadí a prioritách.
 
@@ -18,14 +18,14 @@ rozhoduje o jejich pořadí a prioritách.
         naše změny. Nepoužíváme vlastní kopie celého projektu a navzájem si
         neklonujeme různé veřejné klony projektu. Příklad: `jachym` vždycky bude
         stahovat změny z a posílat změny do repozitáře označeného jako *origin*
-        na serveru `gitlab.geo/gp2-lib/`. Nidky si neudělá kopii od `pavel` nebo
+        na serveru `gitlab.geo/gp2-lib/`. Nikdy si neudělá kopii od `pavel` nebo
         `chrudos`. Ale: jachym bude vždycky pracovat minimálně se dvěma klony
-        projektu: s *origin* (tedy tím, co je na serveru) a *lokální kopií*.
+        projektu: s *origin* (tedy tím, co je na serveru) a s *lokální kopií*.
 
         Intenzivně používáme možnost větvení a zpětné sehrávání - každý vývojář
         je odpovědný za kód, který posílá do hlavní větve. Kód je ale vyvíjen
-        separátně ve větvích a do hlavní větve *masteru* jde až pod odlazení a
-        když je jisté, ne nevzniknout konflikty.
+        separátně ve větvích a do hlavní větve *masteru* jde až po odladění a
+        když je jisté, že nevzniknou konflikty.
 
 
 Vytvoření prázdného lokálního repozitáře
@@ -97,3 +97,5 @@ A dostane se vám vyčerpávající odpovědi::
     concept guides. See 'git help <command>' or 'git help <concept>'
     to read about a specific subcommand or concept.
 
+Vytvoření prázdného lokálního repozitáře
+========================================
