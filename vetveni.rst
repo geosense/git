@@ -70,6 +70,146 @@ Jak to vypadá v PyWPS::
       remotes/jan-rudolf/flask
       remotes/jan-rudolf/gh-pages
       remotes/jan-rudolf/master
+      ...
+      remotes/origin/1.0
+      remotes/origin/1.0@1
+      remotes/origin/151_dblog2
+      remotes/origin/HEAD -> origin/master
+      remotes/origin/flask
+      remotes/origin/master
 
+
+Jsou vidět tři registrované vzdálené servery: `origin`, `jachym` a `jan-rudolf`,
+každý s hromadou větví.
+
+GIT umí udržet pořádek v tom, jaká větev na lokále odpovídá jaké větvi na
+serveru. Větev můžete smazat z lokálu - ale na serveru zůstane. Můžete ji smazat
+i ze serveru. Můžete ji na lokále přejmenovat - ale na serveru zůstane stejná.
+
+Založení nové větve je celkem primocare::
+
+    $ git branch pokusna_vetev
+
+Ověříme jaké máme větve::
+
+    $ git branch -la
+
+    * master
+    pokusna_vetev
+    remotes/origin/master
+
+Ověříme, *kde* v historii větev vlastně vznikla (buď v `gitk` nebo pomocí
+logu)::
+
+    $ git tree
+
+    * 1a99084 (HEAD -> master, pokusna_vetev) Doplnění sekce práce s gitem
+    * bc12c5d last note
+    *   6574bcf (origin/master) Merge pull request #1 from madlenkk/master
+    |\  
+    | * 83221c8 Opravy překlepů
+    |/  
+    * 7c75607 neco o gitu
+    * c9aa4cf pridavam README
+    * a7440f4 initial commit
+
+Vidíte, že `pokusna_vetev` vznikla na místě, kd se aktuálně nachází moje
+rozdělaná práce (`HEAD`), což shodou okolností odpovídá stavu větve `master`.
+
+Přepnu se do větve `pokusna_vetev` a zapíšu všechny změny::
+
+    $ git checkout pokusna_vetev
+
+    $ git commit -a -m"Commit do jine vetve"
+
+    $ git tree
+
+    * 2e03719 (HEAD, pokusna_vetev) commit do jine vetve
+    * b89a5c0 (master) pokracovani dokumentace
+    * 1a99084 Doplnění sekce práce s gitem
+    * bc12c5d last note
+    *   6574bcf (origin/master) Merge pull request #1 from madlenkk/master
+    |\  
+    | * 83221c8 Opravy překlepů
+    |/  
+    * 7c75607 neco o gitu
+    * c9aa4cf pridavam README
+    * a7440f4 initial commit
+
+Přepnu se zpátky do větve `master` a provedu záměrně nějakou konfliktní změnu v
+existujícím souboru::
+
+    $ git checkout master
+
+    # editace existujícího souboru
+
+    $ git commit -m"vyroba konfliktniho řádečku" -a
+    $ git show 
+
+    commit 096304c55364e3e4b849fe567402b3444258a49e
+    Author: Jachym Cepicky <jachym.cepicky@gmail.com>
+    Date:   Mon Sep 19 17:54:14 2016 +0200
     
-Tady vyrobíme nějaký ten konfliktní řádeček
+        vyroba konfliktniho řádečku
+    
+    diff --git a/vetveni.rst b/vetveni.rst
+    index b754523..29faf4d 100644
+    --- a/vetveni.rst
+    +++ b/vetveni.rst
+    @@ -72,4 +72,4 @@ Jak to vypadá v PyWPS::
+           remotes/jan-rudolf/master
+     
+         
+    -
+    +Tady vyrobíme nějaký ten konfliktní řádeček
+
+
+Jak to vypadá s historií revizí::
+
+    $ git tree
+
+    * 096304c (HEAD -> master) vyroba konfliktniho řádečku
+    | * 2e03719 (pokusna_vetev) commit do jine vetve
+    |/  
+    * b89a5c0 pokracovani dokumentace
+    * 1a99084 Doplnění sekce práce s gitem
+    * bc12c5d last note
+    *   6574bcf (origin/master) Merge pull request #1 from madlenkk/master
+    |\  
+    | * 83221c8 Opravy překlepů
+    |/  
+    * 7c75607 neco o gitu
+    * c9aa4cf pridavam README
+    * a7440f4 initial commit
+    
+
+A nyní můžeme vyzkoušet spojení větví. Chci změny **z větve** `pokusna_vetev`
+spojit **do větve** `master`::
+
+    # projistotu
+
+    $ git checkout master
+    $ git status
+    On branch master
+    Your branch is ahead of 'origin/master' by 3 commits.
+      (use "git push" to publish your local commits)
+     ...
+
+    # vlastní merge
+
+    $ git merge pokusna_vetev
+
+    Auto-merging vetveni.rst
+    CONFLICT (content): Merge conflict in vetveni.rst
+    Automatic merge failed; fix conflicts and then commit the result.
+
+Hurá, máme konflikt a musíme ho vyřešit. Protože máme perfektní nástroj na řešní
+konfliktů nastavený, stačí použít `git mergetool`, který spustí textový editor
+VIM, ve kterém mohu pohldně konflikty vyřešit.::
+
+    $ git mergetool
+
+Nyní již stačí jen změnu uložit a dát `git merget --continue` pro pokračování v
+mergování::
+
+    $ git merge --continue

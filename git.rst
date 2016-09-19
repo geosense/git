@@ -143,7 +143,77 @@ Změny mohu uložit do revize pomocí `git commit`. Mohu buď vyjmenovat soubor
 který chci uložit nebo použít přepínač `-a`, který uloží změny ve všech
 registrovaných souborech. Další užitečná volba je `-m`, která přidá komentář ke
 commitu. Pokud nepoužiji volbu `-m`, spustí se textový editor podle nastavení
-systému, do kterého je potřeba komentář zadat
+systému, do kterého je potřeba komentář zadat::
 
     $ git commit -a -m"Doplnění sekce práce s gitem"
+    [master 1a99084] Doplnění sekce práce s gitem
+    1 file changed, 48 insertions(+), 2 deletions(-) 
+
+`git status` prozradí, že změny byly uloženy, ale že lokální kopie mého
+repozitáře je od 2 commity napřed před verzí na serveru `origin`::
+
+    $ git status
+    On branch master
+    Your branch is ahead of 'origin/master' by 2 commits.
+      (use "git push" to publish your local commits)
+    nothing to commit, working directory clean
+
+Příkaz `git show` může ukázat, co bylo konkrétní změnou v poslední (nebo
+libovolné) revizi (commitu)::
+
+    $ git show
+    commit 1a9908487f5eebbeaad253e835cabb33ca18a8cd
+    Author: Jachym Cepicky <jachym.cepicky@gmail.com>
+    Date:   Mon Sep 19 16:37:50 2016 +0200
+
+        Doplnění sekce práce s gitem
+
+    diff --git a/git.rst b/git.rst
+    index 93cab2e..557bd32 100644
+    --- a/git.rst
+    +++ b/git.rst
+    @@ -97,7 +97,53 @@ A dostane se vám vyčerpávající odpovědi::
+         concept guides. See 'git help <command>' or 'git help <concept>'
+         to read about a specific subcommand or concept.
+     
+    -Vytvoření prázdného lokálního repozitáře
+    -========================================
+     Co vlastně udělal příkaz `git init` ? Vytvořil lokální adresář `.git` s
+     kompletní historií projektu a nějakou tou konfigurací.
+    +
+    +Stav vašeho aktuálního lokálního repozitáře získáte příkazem `git status` status
+    +může vypadat různě, např. ::
+    +
+
+Každá revize má unikátní identifikátor, který mohu kdykoliv v budoucnu použít a
+vrátit se k němu, často stačí pouze pár unikátních prvních znaků::
+
+    $ git show 1a9908487f
+    commit 1a9908487f5eebbeaad253e835cabb33ca18a8cd
+    Author: Jachym Cepicky <jachym.cepicky@gmail.com>
+    Date:   Mon Sep 19 16:37:50 2016 +0200
     
+        Doplnění sekce práce s gitem
+    
+    diff --git a/git.rst b/git.rst
+    index 93cab2e..557bd32 100644
+
+Nový soubor a adresář můžeme přidat (registrovat) v repozitáři příkazem `git
+add`::
+
+    $ git add cheatsheet.rst
+    $ git status
+
+    On branch master
+    Your branch is ahead of 'origin/master' by 2 commits.
+      (use "git push" to publish your local commits)
+    Changes to be committed:
+      (use "git reset HEAD <file>..." to unstage)
+    
+    	    new file:   cheatsheet.rst
+
+A to je vlastně celé workflow: Pracujete, děláte změny v souborech, ucelené
+bloky změn ukládáte do repozitáře do samostatných revizí (`git commit`), nové
+soubory registrujete v repozitáři jak přicházejí (pomocí `git add`). 
+
+
