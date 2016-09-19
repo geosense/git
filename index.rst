@@ -14,6 +14,9 @@ Správa verzí v systému GIT!
 
     uvod
     git
+    log
+    gui
+    cheatsheet
 
 **Odkazy na zdroje**
 

@@ -70,6 +70,114 @@ Jak to vypadá v PyWPS::
       remotes/jan-rudolf/flask
       remotes/jan-rudolf/gh-pages
       remotes/jan-rudolf/master
+      ...
+      remotes/origin/1.0
+      remotes/origin/1.0@1
+      remotes/origin/151_dblog2
+      remotes/origin/HEAD -> origin/master
+      remotes/origin/flask
+      remotes/origin/master
 
+
+Jsou vidět tři registrované vzdálené servery: `origin`, `jachym` a `jan-rudolf`,
+každý s hromadou větví.
+
+GIT umí udržet pořádek v tom, jaká větev na lokále odpovídá jaké větvi na
+serveru. Větev můžete smazat z lokálu - ale na serveru zůstane. Můžete ji smazat
+i ze serveru. Můžete ji na lokále přejmenovat - ale na serveru zůstane stejná.
+
+Založení nové větve je celkem primocare::
+
+    $ git branch pokusna_vetev
+
+Ověříme jaké máme větve::
+
+    $ git branch -la
+
+    * master
+    pokusna_vetev
+    remotes/origin/master
+
+Ověříme, *kde* v historii větev vlastně vznikla (buď v `gitk` nebo pomocí
+logu)::
+
+    $ git tree
+
+    * 1a99084 (HEAD -> master, pokusna_vetev) Doplnění sekce práce s gitem
+    * bc12c5d last note
+    *   6574bcf (origin/master) Merge pull request #1 from madlenkk/master
+    |\  
+    | * 83221c8 Opravy překlepů
+    |/  
+    * 7c75607 neco o gitu
+    * c9aa4cf pridavam README
+    * a7440f4 initial commit
+
+Vidíte, že `pokusna_vetev` vznikla na místě, kd se aktuálně nachází moje
+rozdělaná práce (`HEAD`), což shodou okolností odpovídá stavu větve `master`.
+
+Když provedu změnu do masteru všeho co jsem do teď napsal, věteve `master`
+odjede od `pokusna_vetev`::
+
+    $ git status
+
+    On branch master
+    Your branch is ahead of 'origin/master' by 2 commits.
+      (use "git push" to publish your local commits)
+    Changes to be committed:
+      (use "git reset HEAD <file>..." to unstage)
     
+    	new file:   cheatsheet.rst
+    
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git checkout -- <file>..." to discard changes in working directory)
+    
+    	modified:   conf.py
+    	modified:   git.rst
+    	modified:   index.rst
+    
+    Untracked files:
+      (use "git add <file>..." to include in what will be committed)
+    
+    	gitk.png
+    	gui.rst
+    	log.rst
+    	vetveni.rst
+
+Přidání souborů::
+
+    $ git add gitk.png gui.rst log.rst vetveni.rst
+
+Uložení změny::
+
+    $ git commit -m"pokracovani dokumentace" -a
+    [master b89a5c0] pokracovani dokumentace
+     5 files changed, 239 insertions(+)
+     create mode 100644 cheatsheet.rst
+     create mode 100644 gitk.png
+     create mode 100644 gui.rst
+     create mode 100644 log.rst
+     create mode 100644 vetveni.rst
+
+Výpis stromu revizí::
+
+    $ git tree
+    * b89a5c0 (HEAD -> master) pokracovani dokumentace
+    * 1a99084 (pokusna_vetev) Doplnění sekce práce s gitem
+    * bc12c5d last note
+    *   6574bcf (origin/master) Merge pull request #1 from madlenkk/master
+    |\  
+    | * 83221c8 Opravy překlepů
+    |/  
+    * 7c75607 neco o gitu
+    * c9aa4cf pridavam README
+    * a7440f4 initial commit
+
+Větev `master` je o jednu revizi (jeden commit) napřed před větví
+`pokusna_vetev`.
+
+
+
+
 
