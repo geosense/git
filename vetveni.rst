@@ -72,4 +72,4 @@ Jak to vypadá v PyWPS::
       remotes/jan-rudolf/master
 
     
-
+Tady vyrobíme nějaký ten konfliktní řádeček
