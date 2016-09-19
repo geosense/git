@@ -97,7 +97,53 @@ A dostane se vám vyčerpávající odpovědi::
     concept guides. See 'git help <command>' or 'git help <concept>'
     to read about a specific subcommand or concept.
 
-Vytvoření prázdného lokálního repozitáře
-========================================
 Co vlastně udělal příkaz `git init` ? Vytvořil lokální adresář `.git` s
 kompletní historií projektu a nějakou tou konfigurací.
+
+Stav vašeho aktuálního lokálního repozitáře získáte příkazem `git status` status
+může vypadat různě, např. ::
+
+        $ git status
+        On branch master
+        Your branch is ahead of 'origin/master' by 1 commit.
+          (use "git push" to publish your local commits)
+        nothing to commit, working directory clean
+
+nebo (tyto soubory nejsou v repozitáři a můžu je přidat)::
+
+    $ git status
+        On branch prep
+        Your branch is up-to-date with 'origin/prep'.
+        Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+
+	node_modules_ol3/
+	package.json.orig
+	src/gs/app/gp2.js.orig
+	src/gs/layout/layout.js.orig
+	src/gs/module/datagrid.js.orig
+	src/gs/module/datagrid.js.rej
+        ...
+    
+Status je dobré číst. Pokud změníme nějaký soubor, ukáže nám to status::
+
+    $ git status
+    On branch master
+    Your branch is ahead of 'origin/master' by 1 commit.
+      (use "git push" to publish your local commits)
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git checkout -- <file>..." to discard changes in working directory)
+
+            modified:   git.rst
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+    
+Změny mohu uložit do revize pomocí `git commit`. Mohu buď vyjmenovat soubor
+který chci uložit nebo použít přepínač `-a`, který uloží změny ve všech
+registrovaných souborech. Další užitečná volba je `-m`, která přidá komentář ke
+commitu. Pokud nepoužiji volbu `-m`, spustí se textový editor podle nastavení
+systému, do kterého je potřeba komentář zadat
+
+    $ git commit -a -m"Doplnění sekce práce s gitem"
+    
