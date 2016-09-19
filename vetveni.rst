@@ -209,7 +209,28 @@ VIM, ve kterém mohu pohldně konflikty vyřešit.::
 
     $ git mergetool
 
-Nyní již stačí jen změnu uložit a dát `git merget --continue` pro pokračování v
-mergování::
+Merge je v podstatě samostaný commit, po vyřešení konfliktů musím commit vyrobit
+ručně::
 
-    $ git merge --continue
+    $ git commit
+
+V textovém editoru se mi nabídne komentář "Merge branch 'pokusna_vetev'".
+Uložte soubor a mergování bude samo automaticky pokračovat.
+
+Výsledek::
+
+    $ git tree
+    *   6ebd5ea (HEAD -> master) Merge branch 'pokusna_vetev'
+    |\  
+    | * 2e03719 (pokusna_vetev) commit do jine vetve
+    * | 096304c vyroba konfliktniho řádečku
+    |/  
+    * b89a5c0 pokracovani dokumentace
+    * 1a99084 Doplnění sekce práce s gitem
+    * bc12c5d last note
+    *   6574bcf (origin/master) Merge pull request #1 from madlenkk/master
+    ...
+
+Mám novou revizi 6ebd5ea, vzniklou sloučením větví `pokusna_branch` a `master`,
+vyřešili jsme ručně konflikt. Vše se děje na lokálním repozitáři - serverová
+verze pořád zůstala *zamrzlá* na revizi 6574bcf. Je čas poslat změny na server.

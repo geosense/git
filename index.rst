@@ -16,6 +16,8 @@ Správa verzí v systému GIT!
     git
     log
     gui
+    vetveni
+    server
     cheatsheet
 
 **Odkazy na zdroje**
