@@ -19,6 +19,7 @@ Správa verzí v systému GIT!
     vetveni
     server
     cheatsheet
+    dalsi
 
 **Odkazy na zdroje**
 
