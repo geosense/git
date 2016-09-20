@@ -95,6 +95,8 @@ Copak zatím dělala `Magdalena`::
 
             Opravy překlepů
 
+git tree
+--------
 Lze trochu zpřehlednit výstup::
 
     $ git log --oneline --decorate --all --graph
@@ -120,7 +122,7 @@ nebo prostě příkazem `git config`::
     $ git tree
 
 TIG
-===
+---
 
 Pro příkazovou řádku existuje i příkaz `tig`, který dává také celekem přehledný
 výstup::
