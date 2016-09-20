@@ -119,3 +119,23 @@ nebo prostě příkazem `git config`::
 
     $ git tree
 
+TIG
+===
+
+Pro příkazovou řádku existuje i příkaz `tig`, který dává také celekem přehledný
+výstup::
+
+        2016-09-19 20:19 Jachym Cepicky     o [master] {origin/master} dalsi tipy
+        2016-09-19 20:16 Jachym Cepicky     o doplneni cheatsheetu
+        2016-09-19 20:00 Jachym Cepicky     o remote
+        2016-09-19 18:28 Jachym Cepicky     M─┐ Merge branch 'pokusna_vetev'
+        2016-09-19 17:51 Jachym Cepicky     │ o [pokusna_vetev] commit do jine vetve
+        2016-09-19 17:54 Jachym Cepicky     o │ vyroba konfliktniho řádečku
+        2016-09-19 17:43 Jachym Cepicky     o─┘ pokracovani dokumentace
+        2016-09-19 16:37 Jachym Cepicky     o Doplnění sekce práce s gitem
+        2016-09-15 14:17 Jachym Cepicky     o last note
+        2016-09-16 14:35 Jachym Cepicky     M─┐ Merge pull request #1 from madlenkk/master
+        2016-09-16 14:29 Magdalena Kabatova │ o {madlenkk/master} Opravy překlepů
+        2016-09-07 16:25 Jachym Cepicky     o─┘ neco o gitu
+        2016-09-06 09:56 Jachym Cepicky     o pridavam README
+        2016-09-06 09:51 Jachym Cepicky     I initial commit
